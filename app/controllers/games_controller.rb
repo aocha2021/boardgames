@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def index
-
+    @pagy, @games = pagy(Game.order(id: :desc), items: 8)
   end
 
   def new
@@ -22,6 +22,9 @@ class GamesController < ApplicationController
       render :new
     end
   end
+
+  
+
   private
 
   def game_params

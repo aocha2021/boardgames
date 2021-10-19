@@ -1,11 +1,14 @@
-<div class="row">
-  <aside class="col-sm-4">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title"><%= @game.title %></h3>
-      </div>
-    </div>
-  </aside>
+<div class="d-flex p-2 bd-highlight justify-content-around">
+  <div class="p-2 bd-highlight"><%= @game.producer %></div>
+  <div class="p-2 bd-highlight"><%= @game.title %></div>
+  <div class="p-2 bd-highlight"><%= @game.release %>年</div>
+</div>
+
+<div class="d-flex p-2 bd-highlight justify-content-around">
+  <div class="p-2 bd-highlight"><%= render 'favorites/favorite_button', game: @game %></div>
+  <div class="p-2 bd-highlight">レビュー</div>
+</div>
+
   <div class="col-sm-8">
     <ul class="nav nav-tabs nav-justified mb-3">
       <li class="nav-item"><a href="#" class="nav-link">Microposts</a></li>
