@@ -15,10 +15,10 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
 
     if @game.save
-      flash[:success] = 'ユーザを登録しました。'
+      flash[:success] = 'ゲームを登録しました。'
       redirect_to root_path
     else
-      flash.now[:danger] = 'ユーザの登録に失敗しました。'
+      flash.now[:danger] = 'ゲームの登録に失敗しました。'
       render :new
     end
   end
@@ -28,7 +28,10 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:title, :producer, :release)
+    params.require(:game).permit(:title, 
+                                 :release,
+                                 :producer)
   end
-  
+
+
 end

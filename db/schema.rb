@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_18_121036) do
+ActiveRecord::Schema.define(version: 2021_10_20_091709) do
 
   create_table "favorites", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2021_10_18_121036) do
   create_table "games", charset: "utf8mb4", force: :cascade do |t|
     t.string "title"
     t.string "producer"
-    t.integer "release"
+    t.date "release"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -40,6 +40,21 @@ ActiveRecord::Schema.define(version: 2021_10_18_121036) do
     t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
+  create_table "reviews", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "game_id", null: false
+    t.string "content"
+    t.float "design"
+    t.float "luck"
+    t.float "easy"
+    t.float "strategy"
+    t.float "teamwork"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_reviews_on_game_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -52,4 +67,6 @@ ActiveRecord::Schema.define(version: 2021_10_18_121036) do
   add_foreign_key "favorites", "users"
   add_foreign_key "relationships", "users"
   add_foreign_key "relationships", "users", column: "follow_id"
+  add_foreign_key "reviews", "games"
+  add_foreign_key "reviews", "users"
 end

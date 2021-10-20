@@ -1,15 +1,21 @@
-<% if current_user.favorite?(game) %>
-  <%= form_with(model: current_user.likes.find_by(game_id: game.id), method: :delete) do |f| %>
-    <%= hidden_field_tag :game_id, game.id %>
-    <div class="text-center">
-    <%= f.submit '解除', class: 'btn btn-danger  mx-auto　d-block mb-5' %>
-    </div>
+<% if logged_in? %>
+  <% if current_user.favorite?(game) %>
+    <%= form_with(model: current_user.favorites.find_by(game_id: game.id), method: :delete) do |f| %>
+      <%= hidden_field_tag :game_id, game.id %>
+      <div class="text-center">
+      <%= f.submit '解除', class: 'btn btn-danger  mx-auto　d-block mb-5' %>
+      </div>
+    <% end %>
+  <% else %>
+    <%= form_with(model: current_user.favorites.build) do |f| %>
+      <%= hidden_field_tag :game_id, game.id %>
+      <div class="text-center">
+      <%= f.submit 'お気に入り', class: 'btn btn-primary 　mx-auto　d-block mb-5' %>
+      </div>
+    <% end %>
   <% end %>
 <% else %>
-  <%= form_with(model: current_user.likes.build) do |f| %>
-    <%= hidden_field_tag :game_id, game.id %>
-    <div class="text-center">
-    <%= f.submit '登録', class: 'btn btn-primary 　mx-auto　d-block mb-5' %>
-    </div>
-  <% end %>
+  <div>
+      <%= link_to 'お気に入り登録', signup_path, class: 'btn btn-primary 　mx-auto　d-block mb-5' %>
+  </div>
 <% end %>

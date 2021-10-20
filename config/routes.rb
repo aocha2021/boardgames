@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   
   resources :games, only: [:index, :new, :show, :create]
   resources :relationships, only: [:create, :destroy]
+  resources :favorites, only: [:create, :destroy]
 
 end

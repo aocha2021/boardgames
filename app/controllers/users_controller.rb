@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
   def favorites
     @user = User.find(params[:id])
-    @pagy, @favorites = pagy(@user.favorites)
+    @pagy, @likes = pagy(@user.likes)
     counts(@user)
   end
 
