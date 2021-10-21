@@ -15,9 +15,16 @@ Rails.application.routes.draw do
       get :favorites
     end
   end
+
+  resources :games, only: [:index,:new, :show, :create] do
+    member do
+      resources :reviews, only: [:new, :create, :destroy, :edit, :update]
+    end
+  end
   
-  resources :games, only: [:index, :new, :show, :create]
+
   resources :relationships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
+  
 
 end

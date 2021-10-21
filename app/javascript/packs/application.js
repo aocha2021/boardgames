@@ -9,3 +9,6 @@ import "channels"
 
 Rails.start()
 Turbolinks.start()
+
+window.$ = window.jQuery = require('jquery');
+require('packs/raty')

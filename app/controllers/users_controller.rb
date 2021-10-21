@@ -9,6 +9,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     counts(@user)
+    if logged_in?
+      @pagy, @reviews = pagy(current_user.reviews.order(id: :desc))
+    end
   end
 
   def new

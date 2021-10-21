@@ -4,5 +4,8 @@ class Game < ApplicationRecord
   has_many :favorites
   has_many :like_user, through: :favorites, source: :user
 
+  has_many :reviews
+  has_many :review_user, through: :reviews, source: :user
+
 
 end
