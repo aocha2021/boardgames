@@ -1,18 +1,20 @@
 class ReviewsController < ApplicationController
   before_action :require_user_logged_in
   def new
+    @game = Game.find(params[:id])
     @review = Review.new
   end
 
   def create
     @review = current_user.reviews.build(review_params)
+    @review.game_id = params[:id]
     if @review.save
       flash[:success] = 'レビューを投稿しました。'
-      redirect_to user
+      redirect_to game_path
     else
-      @pagy, @reviews = pagy(current_user.feed_reviews.order(id: :desc))
+      @pagy, @reviews = pagy(current_user.reviews.order(id: :desc))
       flash.now[:danger] = 'レビューの投稿に失敗しました。'
-      render 'new_review'
+      render :new
     end
   end
 
@@ -28,7 +30,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:content, :design, :luck, :easy, :strategy, :teamwork)
+    params.require(:review).permit(:game_id)
   end
   
   

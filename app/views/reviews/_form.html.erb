@@ -1,0 +1,20 @@
+<div class="row my-5">
+  <div class="col-sm-6 offset-sm-3">
+
+    <%= form_with(model: review,local: true) do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
+    　　<%= hidden_field_tag :game_id, game.id %>
+      <div class="mb-3">
+        <%= f.label :content, 'コメント' %>
+        <%= f.text_area :content, class: 'form-control', rows: 5  %>
+      </div>
+  </div>
+  <div class="col-sm-6 offset-sm-3">
+        <div class="my-5 mx-auto" style="width: 100px;">
+          <%= f.submit '登録', class: 'btn btn-primary' %>
+      
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>

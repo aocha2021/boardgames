@@ -1,0 +1,13 @@
+<% if reviews.any? %>
+  <ul class="list-unstyled mt-2">
+    <% reviews.each do |review| %>
+      <li class="my-5 d-flex">
+        <div>
+          <div>
+            <%= review.content %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

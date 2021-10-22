@@ -9,6 +9,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @pagy, @reviews = pagy(Review.order(id: :desc))
   end
 
   def create

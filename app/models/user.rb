@@ -47,19 +47,6 @@ class User < ApplicationRecord
   def favorite?(game)
     self.likes.include?(game)
   end
-  
-  def review(game)
-      self.reviews.find_or_create_by(game_id: game.id)
-  end
-
-  def unreview(game)
-    review = self.reviews.find_by(game_id: game.id)
-    review.destroy if review
-  end
-
-  def review?(game)
-    self.review_games.include?(game)
-  end
 
   
   

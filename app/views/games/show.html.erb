@@ -6,14 +6,11 @@
 
 <div class="d-flex p-2 bd-highlight justify-content-around">
   <div class="p-2 bd-highlight"><%= render 'favorites/favorite_button', game: @game %></div>
-  <div class="p-2 bd-highlight">レビュー</div>
+  <div class="p-2 bd-highlight"><%= link_to 'レビュー投稿', new_review_path, class: 'btn btn-primary 　mx-auto　d-block mb-5' %></div>
 </div>
 
-  <div class="col-sm-8">
-    <ul class="nav nav-tabs nav-justified mb-3">
-      <li class="nav-item"><a href="#" class="nav-link">Microposts</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">Followings</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">Followers</a></li>
-    </ul>
-  </div>
+  <%= render 'reviews/reviews', reviews: @reviews %>
+
+<div class="d-flex p-2 bd-highlight justify-content-around">
+  <%== pagy_bootstrap_nav(@pagy) %>
 </div>
