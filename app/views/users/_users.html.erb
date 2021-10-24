@@ -10,7 +10,21 @@
             <p><%= link_to 'プロフィールへ', user_path(user), class: "text-decoration-none" %></p>
           </div>
           <div>
-            <%= render 'relationships/follow_button', user: @user %>
+            <% if current_user.following?(user) %>
+              <%= form_with(model: current_user.relationships.find_by(follow_id: user.id), method: :delete) do |f| %>
+                <%= hidden_field_tag :follow_id, user.id %>
+                <div class="text-center">
+                <%= f.submit 'Unfollow', class: 'btn btn-danger  mx-auto　d-block mb-5' %>
+                </div>
+              <% end %>
+            <% else %>
+              <%= form_with(model: current_user.relationships.build) do |f| %>
+                <%= hidden_field_tag :follow_id, user.id %>
+                <div class="text-center">
+                <%= f.submit 'Follow', class: 'btn btn-primary 　mx-auto　d-block mb-5' %>
+                </div>
+              <% end %>
+            <% end %>
           </div>
         </div>
       </li>

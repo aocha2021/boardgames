@@ -1,20 +1,66 @@
-<div class="row my-5">
-  <div class="col-sm-6 offset-sm-3">
-
     <%= form_with(model: review,local: true) do |f| %>
         <%= render 'layouts/error_messages', model: f.object %>
     　　<%= hidden_field_tag :game_id, game.id %>
-      <div class="mb-3">
-        <%= f.label :content, 'コメント' %>
-        <%= f.text_area :content, class: 'form-control', rows: 5  %>
-      </div>
+<div class="row my-5 gx-0">
+  <div class="col-sm-3">
+        <%= f.label :content, 'コメント'%>
   </div>
+  <div class="col-sm-6 offset-sm-3">
+        <%= f.text_area :content, class: 'form-control', rows: 5  %>
+  </div>
+</div>
+<div class="row align-items-center my-5 gx-0">
+  <div class="col-sm-2">
+        <%= f.label :design, 'デザイン' %>
+  </div>
+  <div class="col-sm-4 text-center border text-break text-wrap">世界観を味わえるデザインか、またはユニークかなどの外装面</div>
+  <div class="col-sm-1 offset-sm-2">
+        <%= f.select :design, [["1点", "1"], ["2点", "2"],["3点", "3"],["4点", "4"],["5点", "5"]], include_blank: "評価して下さい" %>
+  </div>
+</div>
+<div class="row align-items-center my-5 gx-0">
+  <div class="col-sm-2">
+        <%= f.label :luck, '運' %>
+  </div>
+  <div class="col-sm-4 text-center border text-break text-wrap">運や確率の影響度</div>
+  <div class="col-sm-1 offset-sm-2">
+        <%= f.select :luck, [["1点", "1"], ["2点", "2"],["3点", "3"],["4点", "4"],["5点", "5"]], include_blank: "評価して下さい" %>
+  </div>
+</div>
+<div class="row align-items-center my-5 gx-0">
+  <div class="col-sm-2">
+        <%= f.label :easy, '手軽さ' %>
+  </div>
+  <div class="col-sm-4 text-center border text-break text-wrap">1ゲーム当たりの時間</div>
+  <div class="col-sm-1 offset-sm-2">
+        <%= f.select :easy, [["1点", "1"], ["2点", "2"],["3点", "3"],["4点", "4"],["5点", "5"]], include_blank: "評価して下さい" %>
+  </div>
+</div>
+<div class="row align-items-center my-5 gx-0">
+  <div class="col-sm-2">
+        <%= f.label :strategy, '戦略' %>
+  </div>
+  <div class="col-sm-4 text-center border text-break text-wrap">計画性の有無</div>
+  <div class="col-sm-1 offset-sm-2">
+        <%= f.select :strategy, [["1点", "1"], ["2点", "2"],["3点", "3"],["4点", "4"],["5点", "5"]], include_blank: "評価して下さい" %>
+  </div>
+</div>
+<div class="row align-items-center my-5 gx-0">
+  <div class="col-sm-2">
+        <%= f.label :teamwork, 'チームワーク' %>
+  </div>
+  <div class="col-sm-4 text-center border text-break text-wrap">人数が多いほうが盛り上がるか</div>
+  <div class="col-sm-1 offset-sm-2">
+        <%= f.select :teamwork, [["1点", "1"], ["2点", "2"],["3点", "3"],["4点", "4"],["5点", "5"]], include_blank: "評価して下さい" %>
+  </div>
+</div>
+  
+
   <div class="col-sm-6 offset-sm-3">
         <div class="my-5 mx-auto" style="width: 100px;">
           <%= f.submit '登録', class: 'btn btn-primary' %>
       
-          <% end %>
+     <% end %>
         </div>
     </div>
   </div>
-</div>

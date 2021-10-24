@@ -1,13 +1,31 @@
 <% if reviews.any? %>
-  <ul class="list-unstyled mt-2">
-    <% reviews.each do |review| %>
-      <li class="my-5 d-flex">
-        <div>
-          <div>
-            <%= review.content %>
-          </div>
+  <% reviews.each do |review| %>
+　<div class="border mx-auto " style="max-width: 600px">
+    <div class="row no-gutters align-items-center">
+
+        <div class="col-md-4">
+        	<h3 class=""><%= link_to review.game.title, game_path(review.game), class: "text-decoration-none" %> </h3>
         </div>
-      </li>
-    <% end %>
-  </ul>
+        <div class="col-md-8">
+        	<h5 class=""><%= link_to review.user.name, user_path(review.user), class: "text-decoration-none" %> </h5>
+          <p class=""><%= review.content %></p>
+          <div class="row boarder">
+            <div class="col small">デザイン:</div>
+            <div class="col small">運:</div>
+            <div class="col small">手軽さ:</div>
+            <div class="col small">戦略性:</div>
+            <div class="col small">チームワーク:</div>
+          </div>
+          <div class="row boarder">
+            <div class="col small"><span><%= review.design %>点</span></div>
+            <div class="col small"><span><%= review.luck %>点</span></div>
+            <div class="col small"><span><%= review.easy %>点</span></div>
+            <div class="col small"><span><%= review.strategy %>点</span></div>
+            <div class="col small"><span><%= review.teamwork %>点</span></div>
+          </div>
+          <span class="align-bottom"><%= review.created_at %></span>
+        </div>
+    </div>
+　</div>
+　<% end %>
 <% end %>
