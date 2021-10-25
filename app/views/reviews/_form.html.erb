@@ -1,6 +1,5 @@
     <%= form_with(model: review,local: true) do |f| %>
         <%= render 'layouts/error_messages', model: f.object %>
-    　　<%= hidden_field_tag :game_id, game.id %>
 <div class="row my-5 gx-0">
   <div class="col-sm-3">
         <%= f.label :content, 'コメント'%>
@@ -47,7 +46,7 @@
 </div>
 <div class="row align-items-center my-5 gx-0">
   <div class="col-sm-2">
-        <%= f.label :teamwork, 'チームワーク' %>
+        <%= f.label :teamwork, 'チーム性' %>
   </div>
   <div class="col-sm-4 text-center border text-break text-wrap">人数が多いほうが盛り上がるか</div>
   <div class="col-sm-1 offset-sm-2">

@@ -1,9 +1,9 @@
-<div class="bg-secondary boarder mx-auto" style="width: 200px;">
-     <div class="text-center text-white">
-       <h3>ログイン</h3>
-     </div>
+<div class="row gx-0"> 
+  <div class="bg-secondary col-sm-6 offset-sm-3 boarder w-50">
+    <div class="text-center text-white">ログイン</div>
+  </div>
 </div>
-<div class="row">
+<div class="row my-5">
   <div class="col-sm-6 offset-sm-3">
 
     <%= form_with(url: login_path, scope: :session) do |f| %>
@@ -17,7 +17,7 @@
         <%= f.label :password, 'Password' %>
         <%= f.password_field :password, class: 'form-control' %>
       </div>
-      <div class="mt-5 mx-auto" style="width: 100px;">
+      <div class="my-5 text-center">
       <%= f.submit 'ログイン', class: 'btn btn-primary'%>
     　</div>
     <% end %>
